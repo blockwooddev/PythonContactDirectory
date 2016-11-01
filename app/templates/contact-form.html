@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% if form.errors %}
+    <span style="color: red;">
+    {% for element in form %}
+        {% if element.errors %}
+            {{ element.label }}: {{element.errors}} <br />
+        {% endif %}
+    {% endfor %}
+    </span>
+{% endif %}
+<form action="" method="post" name="addcontact">
+    <dl>
+        {{ form.hidden_tag() }}
+        {{ render_field(form.name) }}
+        {{ render_field(form.age) }}
+        {{ render_field(form.phone_number) }}
+        <input type=submit value="{{ submit_label }}">
+    </dl>
+</form>
+{% endblock %}

@@ -36,6 +36,10 @@ def find_contact(phone_number):
         print("Contact Name: {} Age: {}".format(contact["name"], contact["age"]))
 
 def subscribe(phone_number):
-    subscriptions[str(phone_number)] = True
+    phone_number = str(phone_number)
+    if phone_number in contacts:
+        subscriptions[phone_number] = True
+    else:
+        print("Cannot subscribe to contact with phone number {}, does not exist".format(phone_number))
 
 

@@ -4,7 +4,7 @@ subscriptions = {} #doesn't really matter what the value is
 def add_contact(phone_number, name, age):
     phone_number = str(phone_number)
     try:
-        contacts[phone_number]
+        contacts[phone_number] #check existence
     except KeyError:
         contacts[phone_number] = {
             "name": name,
@@ -15,13 +15,16 @@ def add_contact(phone_number, name, age):
 
 def update_contact(phone_number, key, value):
     phone_number = str(phone_number)
+    key = str(key).lower()
+
     try:
         contacts[phone_number]
     except KeyError:
         print("Contact does not exist for phone number: {}".format(phone_number))
     else:
         try:
-            contacts[phone_number][str(key).lower()] = value
+            contacts[phone_number][key]
+            contacts[phone_number][key] = value
             try:
                 subscriptions[phone_number]
                 print("You are subscribed to {} and it changed. Name: {} Age: {}".format(
